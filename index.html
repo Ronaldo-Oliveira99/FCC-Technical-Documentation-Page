@@ -1,0 +1,496 @@
+<html<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="css/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
+    </head>
+    <nav id="navbar">
+        <header> React Documentação </header>
+        <ul>
+            <li><a class="nav-link" href="#Introduction">Introdução</a></li>
+            <li><a class="nav-link" href="#Como_Ler_Esse_Guia">Como Ler Esse Guia</a></li>
+            <li><a class="nav-link" href="#Hello_World">Hello World</a></li>
+            <li><a class="nav-link" href="#Introduzindo_JSX">Introduzindo JSX</a></li>
+            <li><a class="nav-link" href="#Renderizando_Elementos">Renderizando Elementos JSX</a></li>
+            <li><a class="nav-link" href="#Componentes_e_Props">Componentes e Props</a></li>
+            <li><a class="nav-link" href="#Estado_e_Ciclo_de_Vida">Estado e Ciclo de Vida</a></li>
+            <li><a class="nav-link" href="#Manipulando_eventos">Manipulando eventos</a></li>
+            <li><a class="nav-link" href="#Renderização_condicional">Renderização condicional</a></li>
+            <li><a class="nav-link" href="#Listas_e_Chaves">Listas e Chaves</a></li>
+            <li><a class="nav-link" href="#Formulários">Formulários</a></li>
+            <li><a class="nav-link" href="#referencia">Referência</a></li>
+        </ul>
+    </nav>
+    <main id="main-doc" >
+        <section class="main-section" id="Introduction">
+            <header>Introdução</header>
+            <article>
+                <p class="titulo2"> <!-- 10 paragrafos -->
+                React é uma biblioteca JavaScript para construção de interfaces de usuário.
+                </p>
+                <ul>
+                    <li>
+                        React faz com que a criação de UIs interativas seja uma tarefa fácil. Crie views simples para cada estado na sua aplicação, 
+                        e o React irá atualizar e renderizar de forma eficiente apenas os componentes necessários na medida em que os dados mudam.
+                        Views declarativas fazem com que seu código seja mais previsível e simples de depurar.
+                    </li>
+                    <li>
+                        Crie componentes encapsulados que gerenciam seu próprio estado e então, combine-os para criar UIs complexas.
+                        Como a lógica do componente é escrita em JavaScript e não em templates, você pode facilmente passar diversos tipos de dados 
+                        ao longo da sua aplicação e ainda manter o estado fora do DOM.
+                    </li>
+                </ul>
+                <p class="titulo2" > <!-- 10 paragrafos -->
+                    Editores Online.
+                </p>
+                <p>
+                    Se você está interessado em testar um pouco o React, pode usar um editor de código online. Tente um Olá Mundo no CodePen ou 
+                    CodeSandbox.
+                </p>
+                <p>
+                    Se prefere usar o seu próprio editor de texto, pode também baixar este arquivo HTML, editá-lo e a partir do seu sistema 
+                    de arquivos abrir em seu navegador web. Este arquivo faz uma lenta transformação de código em tempo de execução, portanto 
+                    nós recomendamos usar somente para demonstrações simples.
+                </p>
+            </article>
+        </section>
+        <hr>
+        <section class="main-section" id="Como_Ler_Esse_Guia">
+                <header>Como Ler Esse Guia</header>
+                <article>
+                
+                    <p> <!-- 10 paragrafos -->
+                        Nesse guia, vamos examinar os fundamentos das aplicações React: elementos e componentes. Depois que você tiver o domínio, 
+                        poderá criar aplicações complexas a partir de partes pequenas e reutilizáveis.
+                    </p>
+                    <p>
+                        Esse guia é destinado a pessoas que preferem aprender conceitos passo a passo. Se você prefere aprender fazendo, confira nosso tutorial prático. 
+                        Você pode acabar descobrindo que esse guia e o tutorial se complementam.
+                    </p>
+                    <p class="titulo2">
+                        Suposições de nível de conhecimento
+                    </p>
+                    <p>
+                        React é uma biblioteca JavaScript, então assumiremos que você possui um entendimento básico da linguagem. Se não se sentir confiante, 
+                        nós recomendamos: seguir um tutorial de javascript para checar o seu nível de conhecimento e garantir que você poderá acompanhar esse guia 
+                        sem se perder. Isso pode levar entre 30 minutos e uma hora, mas você não sentirá como se estivesse aprendendo React e JavaScript ao mesmo tempo.
+                    </p>
+                </article>
+            </section>
+            <hr>
+            <section class="main-section" id="Hello_World">
+                    <header>Hello World</header>
+                    <article>
+                        <p class="titulo2"> <!-- 10 paragrafos -->
+                            O menor exemplo de React é algo assim:
+                        </p>
+                        <code>ReactDOM.render( <br>
+                            &nbsp&#60h1&#62Hello, world!&#60/h1&#62, <br>
+                                document.getElementById('root')); <br>
+                                <!-- 5 code -->
+                        </code>   
+                        <p>Isso mostra um header dizendo “Hello, world!” na página.</p>
+                    </article>
+                </section>
+                <hr>
+                <section class="main-section" id="Introduzindo_JSX">
+                        <header>Introduzindo JSX</header>
+                        <article>
+                            <p class="titulo2"> <!-- 10 paragrafos -->
+                                Considere esta declaração de variável:
+                            </p>
+                            <code>const element = <br>
+                                &nbsp&#60h1&#62Hello, world!&#60/h1&#62 ;<br>
+                                    <!-- 5 code -->
+                            </code>   
+                            <p>Esta sintaxe estranha de tags não é uma string, nem HTML. </p>
+                            <p>É chamada JSX e é uma extensão de sintaxe para JavaScript. Recomendamos usar JSX com o React para descrever como a 
+                                UI deveria parecer. JSX pode lembrar uma linguagem de template, mas que vem com todo o poder do JavaScript.</p>
+                            <p class="titulo2"> <!-- 10 paragrafos -->
+                                Incorporando Expressões em JSX
+                            </p>
+                            <p>No exemplo abaixo, declaramos uma variável chamada name e então a usamos dentro do JSX ao envolvê-la com chaves:</p>
+                            <code>  const name = 'Josh Perez'; <br>
+                                    const element = &#60h1&#62Hello, world!&#60/h1&#62 ; <br>
+                                    ReactDOM.render( <br>
+                                        &nbspelement, <br>
+                                    document.getElementById('root') <br>
+                                    ); <br>
+                                    <!-- 5 code -->
+                            </code> 
+                            <p>Você pode inserir qualquer expressão JavaScript válida dentro das chaves em JSX. Por exemplo, 2 + 2, user.firstName, ou formatName(user) são todas expressões JavaScript válidas.</p>
+                            <p>No exemplo abaixo, incorporamos o resultado da chamada de uma função JavaScript, formatName(user), dentro de um elemento &#60h1&#62.</p>
+                            <code>  function formatName(user) { <br>
+                                &nbsp return user.firstName + ' ' + user.lastName; <br>
+                                  } <br>
+                                  
+                                    const user = { <br>
+                                        &nbsp firstName: 'Harper', <br>
+                                        &nbsp lastName: 'Perez' <br>
+                                    }; <br>
+                                    const element = ( <br>
+                                    &nbsp &#60h1&#62 <br>
+                                    &nbsp&nbsp  Hello, {formatName(user)}! <br>
+                                    &nbsp&#60/h1&#62 <br>
+                                    ); <br>
+                                    ReactDOM.render( <br>
+                                    &nbspelement, <br>
+                                    document.getElementById('root') <br>
+                                    );<br>
+                                   
+                            </code> 
+                        </article>
+                    </section>
+                    <hr>
+                    <section class="main-section" id="Renderizando_Elementos">
+                            <header>Renderizando Elementos</header>
+                            <article>
+                                <p class="titulo2"> <!-- 10 paragrafos -->
+                                    Um elemento descreve o que você quer ver na tela:
+                                </p>
+                                <code>const element = 
+                                        &#60h1&#62Hello, world!&#60/h1&#62 ;
+                                        <!-- 5 code -->
+                                </code>   
+                                <p>Diferente de elementos DOM do navegador, elementos React são objetos simples e utilizam menos recursos. O React DOM é o responsável
+                                    por atualizar o DOM para exibir os elementos React.<p> <!-- 10 paragrafos -->
+                                </p>
+                                <p class="titulo2">Renderizando um Elemento no DOM
+                                    Suponhamos que exista um &#60div&#62  em algum lugar do seu código HTML:</p>
+                                <code> 
+                                    &#60div id="root"&#62&#60/div&#62 
+
+                                </code> 
+                                <p>Nós o chamamos de nó raiz do DOM porque tudo dentro dele será gerenciado pelo React DOM.</p>
+
+                                <p>Aplicações construídas apenas com React geralmente tem apenas um único nó raiz no DOM. Se deseja 
+                                    integrar o React a uma aplicação existente, você pode ter quantos nós raiz precisar.</p>
+                                        
+                                <p> Para renderizar um elemento React em um nó raiz, passe ambos para ReactDOM.render():</p>
+                                <code> 
+                                        const element =  &#60h1&#62Hello, world!&#60/h1&#62 ;<br>
+                                        ReactDOM.render(element, document.getElementById('root'));<br> 
+                               </code> 
+                                <p>Assim, é exibido “Hello, world” na página.</p>
+
+                            </article>
+                        </section>
+                        <hr>
+                        <section class="main-section" id="Componentes_e_Props">
+                            <header>Componentes e Props</header>
+                            <article>
+                                <p> <!-- 10 paragrafos -->
+                                    Componentes permitem você dividir a UI em partes independentes, reutilizáveis e pensar em cada parte isoladamente. 
+                                    Essa página fornece uma introdução à ideia de componentes. Você pode encontrar uma 
+                                </p>
+                                <p>
+                                    Conceitualmente, componentes são como funções JavaScript. Eles aceitam entradas arbitrárias 
+                                    (chamadas “props”) e retornam elementos React que descrevem o que deve aparecer na tela.
+                                </p>   
+                                <p>Diferente de elementos DOM do navegador, elementos React são objetos simples e utilizam menos recursos. O React DOM é o responsável
+                                    por atualizar o DOM para exibir os elementos React.<p> <!-- 10 paragrafos -->
+                                </p>
+                                <p class="titulo2">
+                                    Componentes de Função e Classe
+                                </p>
+                                <p>
+                                    A maneira mais simples de definir um componente é escrever uma função JavaScript:
+                                </p>
+                                <code> 
+                                        function Welcome(props) {<br>
+                                            &nbspreturn &#60h1&#62>Hello, {props.name}&#60/h1&#62 ; <br>
+                                          } <br>
+                                        <!-- 5 code -->
+                                </code> 
+                                <p>Essa função é um componente React válido porque aceita um único argumento de objeto “props” (que significa propriedades) 
+                                    com dados e retorna um elemento React. Nós chamamos esses componentes de “componentes de função” porque são literalmente funções JavaScript.</p>
+
+                                <p>Você também pode usar uma classe ES6 para definir um componente:</p>                        
+                                <code> 
+                                        class Welcome extends React.Component {<br>
+                                            &nbsp render() {<br>
+                                                &nbsp return &#60h1&#62Hello, {this.props.name}&#60/h1&#62 ;<br>
+                                                &nbsp }<br>
+                                          }<br>
+                                </code> 
+                                <p>Os dois componentes acima são equivalentes do ponto de vista do React.
+
+                                </p>
+                            </article>
+                        </section>
+                        <hr>
+                        <section class="main-section" id="Estado_e_Ciclo_de_Vida">
+                                <header>Estado e Ciclo de Vida </header>
+                                <article>
+                                    <p class="titulo2"> <!-- 10 paragrafos -->
+                                        Esta página apresenta o conceito de estado e ciclo de vida em um componente React.
+                                    </p>
+                                    <p>
+                                        Considere o exemplo do relógio de uma das seções anteriores. Em Elementos de Renderização, 
+                                        nós aprendemos apenas uma maneira de atualizar a UI. Nós chamamos ReactDOM.render() para mudar a saída renderizada.
+                                    </p>
+                                    <code>function tick() { <br>
+                                        &nbspconst element = (<br>
+                                            &nbsp&nbsp  &#60div&#62<br>
+                                            &nbsp&nbsp&nbsp    &#60h1&#62Hello, world!&#60/h1&#62<br>
+                                            &nbsp&nbsp&nbsp    &#60h2&#62It is {new Date().toLocaleTimeString()}.&#60/h2&#62<br>
+                                            &nbsp&nbsp    &#60/div&#62<br>
+                                            );<br>
+                                            ReactDOM.render(<br>
+                                            &nbsp element,<br>
+                                            &nbsp document.getElementById('root')<br>
+                                            &nbsp );<br>
+                                          }<br>
+                                          
+                                          setInterval(tick, 1000);
+                                    </code>   
+                                    <p> Esta seção, aprenderemos como tornar o componente Clock verdadeiramente reutilizável e 
+                                        encapsulado. Ele irá configurar seu próprio temporizador e se atualizar a cada segundo. <!-- 10 paragrafos -->
+                                    </p>
+                                    <p> Podemos começar encapsulando como o relógio parece:</p>
+                                    <code>function Clock(props){ <br>
+                        
+                                            &nbsp&nbsp  &#60div&#62<br>
+                                            &nbsp&nbsp&nbsp    &#60h1&#62Hello, world!&#60/h1&#62<br>
+                                            &nbsp&nbsp&nbsp    &#62It is {props.date.toLocaleTimeString()}.&#60/h2&#62<br>
+                                            &nbsp&nbsp    &#60/div&#62<br>
+                                            );<br>
+                                            function tick() {
+                                            &nbspReactDOM.render(<br>
+                                            &#60Clock date={new Date()} /&#62,<br>
+                                            &nbsp document.getElementById('root')<br>
+                                            &nbsp );<br>
+                                          }<br>
+                                          
+                                          setInterval(tick, 1000);
+                                    </code>  
+
+                                    <p>No entanto, falta um requisito crucial: o fato de que o Clock configura um 
+                                        temporizador e atualiza a UI a cada segundo deve ser um detalhe de implementação do Clock.</p>
+    
+                                    <p>Idealmente, queremos escrever isto uma vez e ter o Clock se atualizando:</p>
+                                            
+                                    <code>  ReactDOM.render(<br>
+                                            &nbsp &#60h1&#62Clock&#60/h1&#62 ;<br>
+                                            &nbsp document.getElementById('root')<br>
+                                            );
+                                    </code> 
+                                    <p>Para implementá-lo, precisamos adicionar um “state” ao componente Clock.</p>
+                                    <p>O state do componente é similar as props, mas é privado e totalmente controlado pelo componente.</p>
+                                </article>
+                            </section>
+                            <hr>
+                            <section class="main-section" id="Manipulando_eventos">
+                                    <header>Manipulando eventos </header>
+                                    <article>
+                                        <p class="titulo2"> <!-- 10 paragrafos -->
+                                            Manipular eventos em elementos React é muito semelhante a manipular eventos em elementos do DOM. 
+                                            Existem algumas diferenças sintáticas:
+                                        </p>
+                                        <ul>
+                                                <li>
+                                                    Eventos em React são nomeados usando camelCase ao invés de letras minúsculas.
+                                                </li>
+                                                <li>
+                                                    Com o JSX você passa uma função como manipulador de eventos ao invés de um texto.
+                                                </li>
+                                            </ul>
+                                            <p>Por exemplo, com HTML:</p>
+
+
+
+                                        <code>
+                                            &#60button onclick="activateLasers()"&#62 <br>
+                                            &nbspAtivar lasers <br>
+                                            &#60/button&#62 <br>
+                                        </code>   
+                                        <p>É ligeiramente diferente com React:</p> <!-- 10 paragrafos -->
+
+                                        <code>
+                                            &#60button onClick={activateLasers}&#62 <br>
+                                            &nbspAtivar lasers <br>
+                                            &#60/button&#62 <br>
+
+                                        </code>  
+    
+                                        <p>Outra diferença é que você não pode retornar false para evitar o comportamento padrão no React. Você deve chamar 
+                                            preventDefault explícitamente. Por exemplo, com HTML simples, para evitar que um link abra uma nova página, você pode escrever:
+                                        </p>
+                
+                                        <code>  
+                                            &#60a href="#" onclick="console.log('O link foi clicado.'); return false"&#62 <br>
+                                            &nbspf Clique Aqui <br>
+                                            &#60/a&#62 <br>
+                                        </code> 
+                                        <p>No React, isso poderia ser:
+
+                                            </p>
+                                         <code>  
+                                            function ActionLink() { <br>
+                                            &nbspfunction handleClick(e) { <br>
+                                            &nbsp&nbspe.preventDefault(); <br>
+                                            &nbsp&nbsp&nbspconsole.log('O link foi clicado.'); <br>
+                                                }<br>
+                                                
+                                                &nbspreturn ( <br>
+                                                &nbsp&nbsp&#60a href="#" onClick={handleClick}&#62 <br>
+                                                &nbsp&nbspClique Aqui <br>
+                                                &nbsp&#60/a&#62 <br>
+                                                );
+                                        </code> 
+                                        <p>Aqui, ”e” é um synthetic event. O React define esses eventos sintéticos de acordo com a especificação W3C. Então, 
+                                            não precisamos nos preocupar com a compatibilidade entre navegadores. Veja a página SyntheticEvent para saber mais.
+                                        </p>
+                                    </article>
+                                </section>
+                                <hr>
+                                <section class="main-section" id="Renderização_condicional">
+                                        <header>Renderização condicional</header>
+                                        <article>
+                                            <p class="titulo2">  
+                                                Em React, você pode criar componentes distintos que encapsulam o comportamento que você precisa. Então, você 
+                                                pode renderizar apenas alguns dos elementos, dependendo do estado da sua aplicação
+                                            </p>
+                                            <p>
+                                                Renderização condicional em React funciona da mesma forma que condições funcionam em JavaScript. Use operadores de 
+                                                JavaScript como if ou operador condicional para criar elementos representando o estado atual, e deixe o React 
+                                                atualizar a UI para corresponde-los.
+                                            </p>
+                                            <p>
+                                                Considere esses dois componentes:
+                                            </p>
+                                            <code>  
+                                                function UserGreeting(props) { <br>
+                                                    &nbsp&nbspreturn &#60h1&#62Welcome back!&#60/h1&#62 ; <br>
+                                                    } <br>
+                                                    
+                                                    &nbspfunction GuestGreeting(props) { <br>
+                                                        &nbsp&nbspreturn &#60h1&#62Please sign up.&#60/h1&#62 ; <br>
+                                                    } <br>
+                                            </code> 
+                                                <p>
+                                                    Nós vamos criar um componente Greeting que mostra um dos outros dois componentes se o usuário estiver logado ou não:
+                                                </p>
+                                                <code>  
+                                                        function Greeting(props) { <br>
+                                                            &nbspconst isLoggedIn = props.isLoggedIn; <br>
+                                                            &nbspif (isLoggedIn) { <br>
+                                                                &nbsp&nbspreturn &#60UserGreeting /&#62 ; <br>
+                                                                &nbsp} <br>
+                                                                &nbspreturn &#60GuestGreeting /&#62 ; <br>
+                                                          } <br>
+                                                          
+                                                          ReactDOM.render( <br>
+                                                            // Try changing to isLoggedIn={true}: <br>
+                                                            &nbsp&#60Greeting isLoggedIn={false} /&#62, <br>
+                                                            &nbspdocument.getElementById('root') <br>
+                                                          ); <br>
+                                                    </code> 
+                                                    <p>Este exemplo renderiza um “greeting” diferente dependendo do valor da prop isLoggedIn.</p>
+
+
+                                        </article>
+                                    </section>
+                                    <hr>
+                                    <section class="main-section" id="Listas_e_Chaves">
+                                            <header>Listas e Chaves</header>
+                                            <article>
+                                                <p class="titulo2">  
+                                                    Primeiro, vamos rever como transformamos listas em JavaScript.
+                                                </p>
+                                                <p>
+                                                    Dado o código abaixo, nós usamos a função map() para receber um array de números e dobrar o valor de cada um deles. 
+                                                    Atribuímos o novo array retornado pela função map() para a variável doubled e imprime no console:
+                                                </p>
+                                                <code>  
+                                                    const numbers = [1, 2, 3, 4, 5]; <br>
+                                                    const doubled = numbers.map((number) => number * 2);<br>
+                                                    console.log(doubled);<br>
+                                                </code> 
+                                                    <p>
+                                                        Esse código imprime [2, 4, 6, 8, 10] no console.
+                                                    </p>
+                                                    <p>
+                                                        No React, transformar arrays em listas de elementos é praticamente idêntico a isso.
+                                                    </p>
+                                                    <p class="titulo2">  
+                                                        Renderizando Múltiplos Componentes
+                                                    </p>
+                                                    <p>
+                                                        Você pode criar coleções de elementos e adicioná-los no JSX usando chaves {}.
+                                                    </p>
+                                                    <p>
+                                                        Abaixo, iteramos pelo array numbers usando a função map() do JavaScript. Retornamos um elemento <li> para cada item. Finalmente, 
+                                                        atribuímos o array de elementos resultante para listItems:
+                                                    </p>
+                                                    <code>  
+                                                        const numbers = [1, 2, 3, 4, 5]; <br>
+                                                        const listItems = numbers.map((number) => <br>
+                                                        &nbsp&#60li&#62{number}&#60/li&#62 <br>
+                                                        );
+                                                    </code> 
+                                                    <p>
+                                                        Adicionamos todo o array listItems dentro de um elemento &#60ul&#62 e renderizamos ele no DOM:
+                                                    </p>
+                                                    <code>  
+                                                            ReactDOM.render( <br>
+                                                                &nbsp&#60ul&#62{listItems}&#60/ul&#62, <br>
+                                                            document.getElementById('root') <br>
+                                                            ); <br>
+                                                    </code> 
+                                                    <p>
+                                                        Esse código mostra uma lista não ordenada de números entre 1 e 5.
+                                                    </p>
+    
+                                            </article>
+                                        </section>
+                                        <hr>
+                                        <section class="main-section" id="Formulários">
+                                                <header>Formulários</header>
+                                                <article>
+                                                    <p class="titulo2">  
+                                                        Os elementos de formulário HTML funcionam de maneira um pouco diferente de outros 
+                                                        elementos DOM no React, porque os elementos de formulário mantêm naturalmente algum estado interno. 
+                                                        Por exemplo, este formulário em HTML puro aceita um único nome:
+                                                    </p>                                        
+                                                    <code>  
+                                                            &#60form&#62  <br>
+                                                            &nbsp&#60label&#62 <br>
+                                                            &nbspNome: <br>
+                                                            &nbsp&nbsp&#60input type="text" name="name" /&#62 <br>
+                                                            &nbsp&#60/label&#62 <br>
+                                                            &nbsp&#60input type="submit" value="Enviar" /&#62 <br>
+                                                            &#60/form&#62 <br>
+                                                    </code> 
+                                                        <p>
+                                                            Esse formulário tem o comportamento padrão do HTML de navegar para uma nova página quando o usuário enviar o formulário. 
+                                                            Se você quer esse comportamento no React, ele simplesmente funciona. Mas na maioria dos casos, é conveniente ter uma função 
+                                                            JavaScript que manipula o envio de um formulário e tem acesso aos dados que o usuário digitou nos inputs. O modo padrão de 
+                                                            fazer isso é com uma técnica chamada “componentes controlados” (controlled components).
+                                                        </p>                                                     
+                                                </article>
+                                            </section>
+                                            <hr>
+                                        <section class="main-section" id="referencia">
+                                                <header>Referencia</header>
+                                                <article>
+                                                    <p class="titulo2">  
+                                                          
+                                                            Toda a documentação desta página está em :<a></a>
+                                                            <a class="nav-link" href="https://pt-br.reactjs.org/">reactjs.org</a>
+                                                    </p>
+                                                    
+                                                                                                          
+                                                </article>
+                                            </section>
+        
+    
+    
+    </main>
+        
+    
+    </html>
